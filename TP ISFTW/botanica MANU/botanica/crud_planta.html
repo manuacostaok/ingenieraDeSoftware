@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> Portal Botanica </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!--Traigo bootstrap--> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./externos/jquery/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="./externos/fontawesome/css/fontawesome.min.css">
+    
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/pagina_vista.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/crud_planta.css'>
+    
+    <script src="./js/utils.js"></script>
+
+    <script type="text/javascript" src="./js/pagina_vista.js"></script>
+    <script type="text/javascript" src="./js/plantas.js"></script>
+    <script type="text/javascript" src="./js/crud_planta.js"></script>
+</head>
+<div class="container-lg">
+        <div class="header">
+            <div class="app-logo">
+            
+                <div>
+                    <h1 id="main-title">Portal de Botanica</h1>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-pills nav-justified">
+            <a class="navbar-brand" href="#">Botanica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav-tabs">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="pagina_empleado2.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="crud_planta.html">Plantas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sucursales_map.html">Sucursales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="formulario_reserva.html">Solicitar una reserva mayorista</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-usuario">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> &nbsp; <label for="">Manu</label>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Ver Plantas</a></li>
+                    <li><a class="dropdown-item" href="#">Cargar Planta</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<body>
+    
+    <div id="contenedor" class="container mt-5">
+        <div class="row">
+            <div id="contenedor_titulos">
+                <h3 class="estilo_titulo"> Registro de plantas y familias nuevas</h3>
+
+            </div>
+        </div>
+        <div class="row">
+            <p>Ingrese los datos necesarios para cargar una familia nueva</p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form id="formularioNuevaFamilia">
+                    <div class="errorval" id="err_nombre">
+                        <label for="" class="small fst-italic py-0">*El campo nombre es obligatorio
+                    </label>
+                    </div>
+                    <input type="text" id="nombreFamilia" class="form-control my-2" placeholder="Nombre de la familia nueva">
+                    
+
+                    <div class="errorval" id="err_selectorTipo">
+                    <label for="" class="small fst-italic py-0">*El campo
+                        clase es obligatorio</label>
+                    </div>
+                    <select id="ClaseFamilia" class="form-select" aria-label="Default select example">
+                     <option selected value="-1">Seleccione la clase</option>
+                     <option value="1">Arbol</option>
+                     <option value="2">Arbusto</option>
+                     <option value="3">Flor</option>
+                     <option value="4">Hierba</option>
+                     </select>
+
+               
+               
+
+                    <div class="errorval" id="err_color"><label for="" class="small fst-italic py-0">*El campo
+                        color es
+                        obligatorio</label>
+                    </div>
+
+                    <input type="text" id="color2" class="form-control my-2" placeholder="Color">
+
+                
+
+                    <input type="file" accept=".png, .jpg, .jpeg" id="fotoProducto" class="form-control my-3"
+                        placeholder="Foto del producto" onchange="readURL(this, $('#blah'))">
+                    <img id="blah" src="#" alt="your image" hidden />
+                
+                
+                    <!-- Button carga familia -->
+                    <button type="button" id="boton" class="btn btn-primary"
+                        onclick="RegistrarFamilia()">
+                    Cargar familia
+                    </button>
+                </form>
+            </div>
+    </div>  
+        <div id="subtitulo" class="row2">
+            <p>Ingrese los datos necesarios para cargar una planta especifica</p>
+        </div>
+        <div id="formulario2" class="row">
+            <div class="col">
+                <form id="formulario">
+                    <div class="errorval" id="err_nombre"> 
+                        <label for="" class="small fst-italic py-0">*El campo nombre es  obligatorio</label>
+                    </div>
+                    <input type="text" id="nombre" class="form-control my-2" placeholder="Nombre de la planta">
+                    <div class="errorval" id="err_nombrecientifico">
+                        <label for="" class="small fst-italic py-0">*El campo
+                        nombre cientifico
+                        es obligatorio</label>
+                    </div>
+                    <input type="text" id="nombre_cientifico" class="form-control my-2" placeholder="Nombre Cientifico">
+
+                    <div class="errorval" id="err_familia">
+                        <label for="" class="small fst-italic py-0">*Debe 
+                        seleccionar una familia
+                        </label>
+                    </div>
+
+
+                    <div class="errorval" id="err_selectorTipo">
+                        <label for="" class="small fst-italic py-0">*El campo
+                        clase es obligatorio</label>
+                    </div>
+                    <select id="selectorTipo" class="form-select" aria-label="Default select example">
+                    <option selected value="-1">Seleccione la clase</option>
+                    <option value="1">Arbol</option>
+                    <option value="2">Arbusto</option>
+                    <option value="3">Flor</option>
+                    <option value="4">Hierba</option>
+                    </select>
+
+                    <div class="errorval" id="err_temperatura">
+                        <label for="" class="small fst-italic py-0">*El campo
+                    temperatura cientifico
+                    es obligatorio</label>
+                    </div>
+                    <input type="text" id="temperatura" class="form-control my-2" placeholder="Temperatura">
+
+                    <div class="errorval" id="err_suelo">
+                        <label for="" class="small fst-italic py-0">*El
+                    campo
+                    riego es obligatorio</label>
+                    </div>
+                    <input type="text" id="suelo" class="form-control my-2" placeholder="Tipo de suelo">
+                
+                    <div class="errorval" id="err_riego">
+                        <label for="" class="small fst-italic py-0">*El
+                    campo
+                    tipo de suelo es obligatorio</label>
+                    </div>
+                <input type="text" id="riego" class="form-control my-2" placeholder="Ciclo de riego">
+                
+
+                <div class="errorval" id="err_color"><label for="" class="small fst-italic py-0">*El campo
+                        color es
+                        obligatorio</label></div>
+
+                <input type="text" id="color" class="form-control my-2" placeholder="Color">
+
+                    <div class="errorval" id="err_fruto"><label for="" class="small fst-italic py-0">*El campo
+                        clase es obligatorio</label>
+                    </div>
+
+                <label for="Da frutos?">Planta da fruto? : </label>
+                
+                <input type="checkbox" onclick="registroPlanta" name="si" id="FRUTOSI" value="si">
+                        <label for="Si">Sí</label>
+                <input type="checkbox" onclick="registroPlanta" name="no" id="FRUTONO" value="no">
+                        <label for="No">No</label>
+
+                <input type="file" accept=".png, .jpg, .jpeg" id="fotoProducto" class="form-control my-3"
+                    placeholder="Foto del producto" onchange="readURL(this, $('#blah'))">
+                <img id="blah" src="#" alt="your image" hidden />
+                
+                <select id="familia" class="form-select form-control my-2" aria-label=".form-select-sm example">
+                    <option selected value=" -1">Familia</option>
+                    <option value="Betulaceae">Betulaceae</option>
+                    <option value="Asteraceae-Compositae">Asteraceae-Compositae</option>
+                    <option value="Aceraceae">Aceraceae</option>
+                    <option value="Rosaceae">Rosaceae</option>
+                    <option value="Rutaceae">Cannabis</option>
+                </select>
+                <!-- Button trigger modal -->
+                <button type="button" id="boton" class="btn btn-primary" onclick="registroPlanta()">
+                    Cargar
+                </button>
+                </form>
+            </div>
+            <footer>
+                <p>SMSTINNOSOF2022© </p>
+            </footer>
+    </div>
+</body>
+</html>

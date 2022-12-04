@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> Portal Botanica </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!--Traigo bootstrap--> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./externos/jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/pagina_vista.js"></script>
+    <script type="text/javascript" src="./js/plantas.js"></script>
+    <script src="./js/utils.js"></script>
+
+
+    <link rel="stylesheet" href="./externos/fontawesome/css/fontawesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/pagina_vista.css'>
+
+
+</head>
+<body>
+    <div class="container-lg">
+        <div class="header">
+            <div class="app-logo">
+            
+                <div>
+                    <h1 id="main-title">Portal de Botanica</h1>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-pills nav-justified">
+            <a class="navbar-brand" href="#">Botanica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav-tabs">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="site-logo" href="pagina_empleado2.html"> <span class="site-logo">Inicio</span></a>
+                 
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="crud_planta.html">Plantas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sucursales_map.html">Sucursales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="formulario_reserva.html">Solicitar una reserva mayorista</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-usuario">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> &nbsp; <label for="">Manu</label>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Ver Plantas</a></li>
+                    <li><a class="dropdown-item" href="#">Cargar Planta</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-plantas" role="tabpanel"
+                aria-labelledby="nav-plantas-tab">
+                <div class="nav-usuario">
+                    <div class="nav-buscador">
+                        <div id="menu-buscador">
+                            &nbsp; &nbsp;
+                            <p> Seleccione una familia para su busqueda, de lo contrario presione buscar para ver todas las familias</p>
+                                <div id="menu-categoria" class="dropdown">
+                                    <select id="select-cat" class="form-select form-select-sm selectCAT"
+                                        aria-label=".form-select-sm example">
+                                        <option selected value="all">Familia</option>
+                                        <option value="Betulaceae">Betulaceae</option>
+                                        <option value="Asteraceae-Compositae">Asteraceae-Compositae</option>
+                                        <option value="Alcachofaus">Alcachofaus</option>
+                                        <option value="Lechuga">Lechuga</option>
+                                        <option value="Cannabis">Cannabis</option>
+                                    </select>
+                                </div>
+                                &nbsp; &nbsp;
+                                <input id="buscador" type="text" placeholder="Planta"> &nbsp; &nbsp;
+                                <input type="button" value="Buscar Planta" onclick=buscadorProductos()>
+                            &nbsp; &nbsp;
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="results">
+                    
+                    <div class="card" id="titleCard">
+                        <div class="card-body">
+                            <h3 id="product-title"></h3>
+                        </div>
+                    </div>
+                    <div id="product_list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <main>
+                <input type="button" id="mostrar" name="boton2" value="Click para mostrar el clima ">
+                <section class="Clima"> 
+                    <div id="container__clima" class="container__clima">
+                        <input type="button" id="ocultar" name="boton2" value="Click para ocultar clima">
+                        <span></span><h2 id="container__clima-temperatura">
+                        </h2>
+                        <h4 id="container__clima-ubicacion" class="container__clima-ubicacion">
+                        </h4>
+                        <p id="container__clima-parametros" class="container__clima-parametros">
+                        </p>
+                        <h4 class="title__clima">Pronóstico semanal</h5>
+                        <div class="dia-1">
+                            <h5 class="dias">Lunes</h5>
+                            <p id="parrafo-dia1" class="parrafo"></p>
+                        </div>
+                        <div class="dia-2">
+                            <h5 class="dias">Martes</h5>
+                            <p id="parrafo-dia2" class="parrafo"></p>
+                        </div>
+                        <div class="dia-3">
+                            <h5 class="dias">Miercoles</h5>
+                            <p id="parrafo-dia3" class="parrafo"></p>
+                            
+                        </div>
+                    </div>
+                </section>
+            </main>
+            
+            
+            <script src="./js/weatherService.js"></script>
+        </div>
+
+</body>
+<footer>
+    <div class="footer__container">
+        <p>Grupo 3 -Acosta -Cardozo -Clauser cerra el ano</p>
+    </div>
+</footer>
+</html>

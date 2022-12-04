@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> Portal Botanica </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!--Mapa--> 
+    <link rel="stylesheet" href="./externos/leaflet/leaflet.css">
+    <script src="./externos/leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="./externos/leaflet/MarkerCluster.css">
+    <link rel="stylesheet" href="./externos/leaflet/MarkerCluster.Default.css">
+    <script src="./externos/leaflet/leaflet.markercluster-src.js"></script>
+
+    <!--Traigo bootstrap--> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="./externos/jquery/jquery-3.6.0.min.js">
+
+    </script>
+
+    <link rel="stylesheet" href="./externos/fontawesome/css/fontawesome.min.css">
+    
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/sucursales_map.css'>
+  
+    
+    <script src="./js/utils.js">
+    </script>
+    <script type="text/javascript" src="./js/sucursales.js">
+    </script>
+    <script type="text/javascript" src="./js/sucursales_map.js">
+    </script>
+    <script src="./js/mapas.js">
+    </script>
+    
+
+</head>
+<div class="container-lg">
+        <div class="header">
+            <div class="app-logo">
+            
+                <div>
+                    <h1 id="main-title">Portal de Botanica</h1>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-pills nav-justified">
+            <a class="navbar-brand" href="#">Botanica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav-tabs">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="pagina_empleado2.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="crud_planta.html">Plantas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sucursales_map.html">Sucursales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="formulario_reserva.html">Solicitar una reserva mayorista</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-usuario">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> &nbsp; <label for="">Manu</label>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Ver Plantas</a></li>
+                    <li><a class="dropdown-item" href="#">Cargar Planta</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<body>
+    
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-plantas" role="tabpanel"
+                aria-labelledby="nav-plantas-tab">
+                <div class="nav-usuario">
+                    <p>Toque buscar para ver las sucursales disponibles</p>
+                    <div class="nav-buscador">
+                        <div id="menu-buscador">
+                            &nbsp; &nbsp;
+                            <input id="buscador-sucursal" type="text" placeholder="Sucursal"> &nbsp; &nbsp;
+                            <input type="button" value="Sucursal" onclick=buscadorSucursales()>
+                        </div>
+                    </div>
+                </div>
+                <div id="results-sucursales">
+                    <div class="card" id="titleCardSucursal">
+                        <div class="card-body">
+                            <h3 id="sucursal-title"></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div id="ll" class="listaOverflow">
+                                <ul class="list-group" id="listaSucursales"></ul>
+                            </div>
+                        </div>
+                        <div class="col-6 mapaMuestra">
+                            <div id="mapid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
